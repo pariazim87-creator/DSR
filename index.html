@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171714" />
+  <meta name="description" content="Daily Study Report — a calm, elegant workspace for planning study sessions, tracking progress, and building consistency." />
+  <title>Daily Study Report — Your focus, beautifully organized</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Daily Study Report home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-copy"><strong>daily study</strong><small>REPORT</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span> Overview</button>
+        <button class="nav-item" data-view="planner"><span class="nav-icon">▦</span> Study planner</button>
+        <button class="nav-item" data-view="reports"><span class="nav-icon">↗</span> Reports & insights</button>
+      </nav>
+      <div class="side-label subject-label">YOUR SUBJECTS <button id="addSubjectBtn" class="tiny-plus" aria-label="Add subject">+</button></div>
+      <div class="subject-list" id="subjectList">
+        <button class="subject-item" data-subject="Biology"><i class="subject-dot sage"></i>Biology<span>08</span></button>
+        <button class="subject-item" data-subject="Chemistry"><i class="subject-dot clay"></i>Chemistry<span>06</span></button>
+        <button class="subject-item" data-subject="Physics"><i class="subject-dot gold"></i>Physics<span>04</span></button>
+        <button class="subject-item" data-subject="Mathematics"><i class="subject-dot lilac"></i>Mathematics<span>05</span></button>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="upgrade-card">
+          <div class="sparkle">✳</div>
+          <strong>Your next chapter<br>starts with today.</strong>
+          <p>Small steps. Remarkable progress.</p>
+          <button id="focusBtn" class="text-button">Start focus session <span>↗</span></button>
+        </div>
+        <button class="profile-mini" id="profileBtn">
+          <span class="avatar">S</span><span class="profile-text"><strong id="profileName">Student</strong><small>Personal workspace</small></span><span class="more">···</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="crumbTitle">Overview</strong></div>
+        <div class="top-actions">
+          <label class="search-wrap"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search tasks, subjects..." aria-label="Search tasks and subjects"><kbd>⌘ K</kbd></label>
+          <button class="icon-button" id="themeBtn" aria-label="Toggle appearance" title="Toggle appearance">◐</button>
+          <button class="login-button" id="loginOpen">Log in <span>↗</span></button>
+        </div>
+      </header>
+
+      <section class="page-view" id="overviewView">
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> THURSDAY, OCTOBER 22, 2026</p>
+            <h1>Make today <em>count.</em></h1>
+            <p class="welcome-sub">A little progress each day adds up to extraordinary results.</p>
+          </div>
+          <button class="primary-button" id="newTaskBtn"><span>＋</span> Add a study task</button>
+        </div>
+
+        <div class="hero-grid">
+          <article class="focus-card">
+            <div class="focus-top"><span class="pill pill-light"><span class="live-dot"></span> TODAY'S FOCUS</span><span class="card-kicker">01 / DAILY REPORT</span></div>
+            <div class="focus-main">
+              <div>
+                <p class="focus-caption">You've studied</p>
+                <div class="focus-number"><span id="hoursStudied">3</span><small>h</small> <span id="minutesStudied">25</span><small>m</small></div>
+                <p class="focus-note">You're building a habit worth keeping.</p>
+              </div>
+              <div class="progress-ring" aria-label="Daily study goal 57 percent">
+                <svg viewBox="0 0 120 120" role="img" aria-hidden="true"><circle class="ring-track" cx="60" cy="60" r="49"></circle><circle class="ring-progress" id="dailyRing" cx="60" cy="60" r="49"></circle></svg>
+                <div class="ring-label"><strong id="goalPercent">57%</strong><span>of daily goal</span></div>
+              </div>
+            </div>
+            <div class="focus-bottom"><span><i class="tiny-check">✓</i> Daily goal: 6 hours</span><button id="editGoalBtn" class="subtle-link">Edit goal <span>↗</span></button></div>
+          </article>
+
+          <article class="quote-card">
+            <div class="quote-mark">“</div>
+            <p class="quote-text">Great things are done by a series of small things brought together.</p>
+            <div class="quote-rule"></div>
+            <div class="quote-author"><span>VINCENT VAN GOGH</span><span class="quote-flower">✳</span></div>
+            <div class="quote-orbit orbit-one"></div><div class="quote-orbit orbit-two"></div>
+          </article>
+        </div>
+
+        <div class="section-heading">
+          <div><p class="eyebrow">YOUR DAY, AT A GLANCE</p><h2>Study overview</h2></div>
+          <button class="period-select" id="periodBtn">This week <span>⌄</span></button>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon sage-bg">◷</span><span class="trend positive">↗ 12.8%</span></div><p class="stat-label">Study time</p><div class="stat-value"><span id="weekHours">18.5</span><small> hrs</small></div><div class="mini-chart bars" aria-label="Study time over seven days"><i style="height:28%"></i><i style="height:48%"></i><i style="height:38%"></i><i style="height:70%"></i><i style="height:54%"></i><i style="height:84%"></i><i class="bar-today" style="height:61%"></i></div><div class="stat-foot"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon clay-bg">✓</span><span class="trend positive">+3 tasks</span></div><p class="stat-label">Tasks completed</p><div class="stat-value"><span id="completedCount">12</span><small> / 18</small></div><div class="horizontal-track"><span id="taskProgress" style="width:66.6%"></span></div><div class="stat-footline"><span>You're on track</span><strong id="taskProgressText">67%</strong></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon gold-bg">✳</span><span class="trend neutral">Personal best: 8</span></div><p class="stat-label">Current streak</p><div class="stat-value"><span>6</span><small> days</small></div><div class="streak-dots" aria-label="Six day streak"><i class="done">M</i><i class="done">T</i><i class="done">W</i><i class="done">T</i><i class="done">F</i><i class="done">S</i><i> S</i></div><div class="stat-footline"><span>Consistency looks good.</span><strong>Keep going</strong></div></article>
+          <article class="stat-card subject-stat"><div class="stat-top"><span class="stat-icon lilac-bg">▤</span><span class="trend neutral">This week</span></div><p class="stat-label">Top subject</p><div class="stat-value subject-value">Biology</div><div class="subject-progress"><span class="subject-progress-fill"></span></div><div class="stat-footline"><span>5h 20m focused</span><strong>+18%</strong></div></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="tasks-panel">
+            <div class="panel-heading"><div><p class="eyebrow">STAY IN YOUR FLOW</p><h2>Today's study plan <span class="count-badge" id="taskCountBadge">06</span></h2></div><button class="view-all" data-view="planner">View planner <span>→</span></button></div>
+            <div class="task-toolbar"><div class="filter-tabs" role="group" aria-label="Filter tasks"><button class="filter-tab active" data-filter="all">All tasks</button><button class="filter-tab" data-filter="pending">To do</button><button class="filter-tab" data-filter="done">Completed</button></div><button class="sort-button" id="sortBtn">↕ <span>Sort</span></button></div>
+            <div class="task-list" id="taskList">
+              <article class="task-row" data-id="1" data-subject="Biology" data-status="pending" data-time="09:00"><button class="task-check" aria-label="Mark Biology review complete"></button><span class="task-subject-icon sage-bg">B</span><div class="task-details"><strong>Cell biology — review notes</strong><span>Biology <i>·</i> 60 min</span></div><span class="task-time">09:00 AM</span><button class="task-more" aria-label="Task options">···</button></article>
+              <article class="task-row" data-id="2" data-subject="Chemistry" data-status="pending" data-time="10:30"><button class="task-check" aria-label="Mark Chemistry practice complete"></button><span class="task-subject-icon clay-bg">C</span><div class="task-details"><strong>Organic chemistry — practice set</strong><span>Chemistry <i>·</i> 45 min</span></div><span class="task-time">10:30 AM</span><button class="task-more" aria-label="Task options">···</button></article>
+              <article class="task-row completed" data-id="3" data-subject="Physics" data-status="done" data-time="12:00"><button class="task-check checked" aria-label="Mark Physics formulas incomplete">✓</button><span class="task-subject-icon gold-bg">P</span><div class="task-details"><strong>Mechanics — formula flashcards</strong><span>Physics <i>·</i> 30 min</span></div><span class="task-time">12:00 PM</span><button class="task-more" aria-label="Task options">···</button></article>
+              <article class="task-row" data-id="4" data-subject="Mathematics" data-status="pending" data-time="14:00"><button class="task-check" aria-label="Mark Mathematics practice complete"></button><span class="task-subject-icon lilac-bg">M</span><div class="task-details"><strong>Functions — problem solving</strong><span>Mathematics <i>·</i> 50 min</span></div><span class="task-time">02:00 PM</span><button class="task-more" aria-label="Task options">···</button></article>
+              <article class="task-row" data-id="5" data-subject="Biology" data-status="pending" data-time="16:00"><button class="task-check" aria-label="Mark Biology quiz complete"></button><span class="task-subject-icon sage-bg">B</span><div class="task-details"><strong>Genetics — 20-question quiz</strong><span>Biology <i>·</i> 35 min</span></div><span class="task-time">04:00 PM</span><button class="task-more" aria-label="Task options">···</button></article>
+              <article class="task-row" data-id="6" data-subject="Chemistry" data-status="pending" data-time="18:30"><button class="task-check" aria-label="Mark Chemistry recap complete"></button><span class="task-subject-icon clay-bg">C</span><div class="task-details"><strong>Daily recap & active recall</strong><span>Chemistry <i>·</i> 25 min</span></div><span class="task-time">06:30 PM</span><button class="task-more" aria-label="Task options">···</button></article>
+            </div>
+            <div id="emptyState" class="empty-state hidden"><span>✳</span><strong>No matching tasks</strong><p>Try a different search or filter.</p></div>
+            <button class="add-task-bottom" id="addTaskBottom">＋ Add another task</button>
+          </section>
+          <aside class="right-column">
+            <section class="subject-panel">
+              <div class="panel-heading compact"><div><p class="eyebrow">A BALANCED APPROACH</p><h2>Subject progress</h2></div><button class="dots-button" aria-label="More subject options">···</button></div>
+              <div class="subject-progress-list">
+                <div class="subject-progress-row"><div class="subject-row-head"><span><i class="subject-dot sage"></i>Biology</span><strong>78%</strong></div><div class="horizontal-track"><span style="width:78%;background:#8b9c80"></span></div></div>
+                <div class="subject-progress-row"><div class="subject-row-head"><span><i class="subject-dot clay"></i>Chemistry</span><strong>64%</strong></div><div class="horizontal-track"><span style="width:64%;background:#c58f76"></span></div></div>
+                <div class="subject-progress-row"><div class="subject-row-head"><span><i class="subject-dot gold"></i>Physics</span><strong>52%</strong></div><div class="horizontal-track"><span style="width:52%;background:#c5a45d"></span></div></div>
+                <div class="subject-progress-row"><div class="subject-row-head"><span><i class="subject-dot lilac"></i>Mathematics</span><strong>41%</strong></div><div class="horizontal-track"><span style="width:41%;background:#a69abf"></span></div></div>
+              </div>
+              <button class="full-width-link" data-view="reports">Explore subject report <span>↗</span></button>
+            </section>
+            <section class="reflection-card">
+              <div class="reflection-icon">✎</div><p class="eyebrow">END-OF-DAY REFLECTION</p><h3>What did you learn today?</h3><p>Take a moment to notice your progress. It matters.</p>
+              <textarea id="reflectionInput" rows="3" placeholder="Today I understood..."></textarea>
+              <button class="reflection-save" id="saveReflection">Save reflection <span>→</span></button><p id="reflectionSaved" class="saved-note hidden">✓ Reflection saved on this device</p>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page-view hidden" id="plannerView">
+        <div class="welcome-row"><div><p class="eyebrow"><span class="eyebrow-line"></span> PLAN WITH PURPOSE</p><h1>Study <em>planner.</em></h1><p class="welcome-sub">Make space for what matters, one session at a time.</p></div><button class="primary-button" id="plannerAddBtn"><span>＋</span> New task</button></div>
+        <div class="planner-banner"><div><p class="eyebrow">YOUR DAILY RHYTHM</p><h2>Structure creates freedom.</h2><p>Choose your next task, protect your focus, and leave room to recharge.</p></div><div class="banner-symbol">◷</div></div>
+        <div class="panel-heading planner-list-heading"><div><p class="eyebrow">YOUR SCHEDULE</p><h2>All study tasks</h2></div><div class="planner-filters"><select id="subjectFilter" aria-label="Filter by subject"><option value="all">All subjects</option><option>Biology</option><option>Chemistry</option><option>Physics</option><option>Mathematics</option></select><select id="statusFilter" aria-label="Filter by status"><option value="all">All statuses</option><option value="pending">To do</option><option value="done">Completed</option></select></div></div>
+        <div class="planner-task-list" id="plannerTaskList"></div>
+      </section>
+
+      <section class="page-view hidden" id="reportsView">
+        <div class="welcome-row"><div><p class="eyebrow"><span class="eyebrow-line"></span> PROGRESS, NOT PERFECTION</p><h1>Your work, <em>in focus.</em></h1><p class="welcome-sub">Every session is a vote for the future you're building.</p></div><button class="period-select" id="reportPeriodBtn">Last 7 days <span>⌄</span></button></div>
+        <div class="report-summary-grid"><article class="report-big-card"><p class="eyebrow">TOTAL FOCUS TIME</p><strong>18h 30m</strong><p><span class="trend positive">↗ 12.8%</span> compared with last week</p><div class="report-bars"><i style="height:34%"></i><i style="height:53%"></i><i style="height:45%"></i><i style="height:76%"></i><i style="height:58%"></i><i style="height:92%"></i><i style="height:64%"></i></div><div class="report-days"><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span></div></article><article class="report-note-card"><span class="note-spark">✳</span><p class="eyebrow">A NOTE FOR YOU</p><h3>Consistency is a quiet kind of confidence.</h3><p>You showed up on 6 days this week. Keep your next goal small enough to start, and meaningful enough to matter.</p></article></div>
+        <section class="report-subjects"><div class="panel-heading"><div><p class="eyebrow">WHERE YOUR TIME WENT</p><h2>Time by subject</h2></div></div><div class="report-subject-row"><span><i class="subject-dot sage"></i>Biology</span><div class="horizontal-track"><span style="width:82%;background:#8b9c80"></span></div><strong>5h 20m</strong></div><div class="report-subject-row"><span><i class="subject-dot clay"></i>Chemistry</span><div class="horizontal-track"><span style="width:68%;background:#c58f76"></span></div><strong>4h 15m</strong></div><div class="report-subject-row"><span><i class="subject-dot gold"></i>Physics</span><div class="horizontal-track"><span style="width:49%;background:#c5a45d"></span></div><strong>3h 10m</strong></div><div class="report-subject-row"><span><i class="subject-dot lilac"></i>Mathematics</span><div class="horizontal-track"><span style="width:43%;background:#a69abf"></span></div><strong>2h 45m</strong></div></section>
+      </section>
+      <footer class="page-footer"><span>DAILY STUDY REPORT</span><span>Made for your next breakthrough <b>✳</b></span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="taskModal" role="dialog" aria-modal="true" aria-labelledby="taskModalTitle">
+    <form class="modal-card" id="taskForm">
+      <button type="button" class="modal-close" data-close="taskModal" aria-label="Close">×</button><p class="eyebrow">MAKE A PLAN</p><h2 id="taskModalTitle">Add a study task</h2><p class="modal-subtitle">A clear next step makes starting easier.</p>
+      <label>Task name<input id="taskTitleInput" required maxlength="90" placeholder="e.g. Review chapter 4"></label>
+      <div class="form-two"><label>Subject<select id="taskSubjectInput"><option>Biology</option><option>Chemistry</option><option>Physics</option><option>Mathematics</option><option>Literature</option><option>Other</option></select></label><label>Start time<input id="taskTimeInput" type="time" value="15:00" required></label></div>
+      <label>Duration<select id="taskDurationInput"><option value="25">25 minutes</option><option value="30">30 minutes</option><option value="45" selected>45 minutes</option><option value="60">1 hour</option><option value="90">1 hour 30 minutes</option><option value="120">2 hours</option></select></label>
+      <button class="primary-button modal-submit" type="submit">Add to my plan <span>→</span></button>
+    </form>
+  </div>
+
+  <div class="modal-backdrop hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <form class="modal-card login-modal-card" id="loginForm">
+      <button type="button" class="modal-close" data-close="loginModal" aria-label="Close">×</button><div class="login-brand-mark">✳</div><p class="eyebrow">WELCOME BACK</p><h2 id="loginTitle">Your focus space awaits.</h2><p class="modal-subtitle">Enter a display name to personalize this demo workspace.</p>
+      <label>Display name<input id="loginNameInput" required maxlength="40" placeholder="Your name"></label>
+      <label>Email address <span class="optional-label">optional for demo</span><input id="loginEmailInput" type="email" placeholder="you@example.com"></label>
+      <button class="primary-button modal-submit" type="submit">Continue <span>→</span></button>
+      <p class="demo-disclaimer">Demo sign-in only. This prototype does not create a secure account or transmit your information.</p>
+    </form>
+  </div>
+
+  <div class="modal-backdrop hidden" id="goalModal" role="dialog" aria-modal="true" aria-labelledby="goalTitle">
+    <form class="modal-card" id="goalForm"><button type="button" class="modal-close" data-close="goalModal" aria-label="Close">×</button><p class="eyebrow">YOUR OWN PACE</p><h2 id="goalTitle">Set a daily goal</h2><p class="modal-subtitle">Choose a realistic target that works for you.</p><label>Daily study goal<select id="goalInput"><option value="2">2 hours</option><option value="3">3 hours</option><option value="4">4 hours</option><option value="5">5 hours</option><option value="6" selected>6 hours</option><option value="7">7 hours</option><option value="8">8 hours</option></select></label><button class="primary-button modal-submit" type="submit">Save daily goal <span>→</span></button></form>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
